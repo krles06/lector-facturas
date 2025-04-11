@@ -18,15 +18,15 @@ export default function Register() {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-4 border rounded shadow">
-      <h2 className="text-xl font-bold mb-4">Crear cuenta</h2>
+    <div className="bg-white p-6 rounded-xl shadow-md">
+      <h2 className="text-2xl font-bold mb-4 text-prussian_blue-500 text-center">Crear cuenta</h2>
       <form onSubmit={handleRegister} className="space-y-4">
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border p-2 rounded"
+          className="w-full border border-sky_blue-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-prussian_blue-500"
           required
         />
         <input
@@ -34,13 +34,16 @@ export default function Register() {
           placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full border p-2 rounded"
+          className="w-full border border-sky_blue-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-prussian_blue-500"
           required
         />
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded w-full">
+        <button
+          type="submit"
+          className="w-full bg-prussian_blue-500 hover:bg-prussian_blue-600 text-white py-2 px-4 rounded transition duration-200"
+        >
           Registrarse
         </button>
-        {message && <p className="text-sm mt-2 text-center">{message}</p>}
+        {message && <p className="text-center text-sm text-green-600 mt-2">{message}</p>}
       </form>
     </div>
   )
