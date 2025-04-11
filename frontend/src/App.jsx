@@ -6,7 +6,6 @@ import Login from './components/Login'
 
 function App() {
   const [session, setSession] = useState(null)
-  console.log('Sesión actual:', session)
   const [selectedFile, setSelectedFile] = useState(null)
   const [processing, setProcessing] = useState(false)
   const [error, setError] = useState(null)
@@ -63,54 +62,58 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen p-4 bg-gray-50">
-      <h1 className="text-2xl font-bold text-center">Lector de Facturas</h1>
+    <div className="min-h-screen bg-light_blue-900 font-sans text-prussian_blue-100">
+      <div className="max-w-4xl mx-auto py-10 px-4">
+        <h1 className="text-4xl font-bold text-center text-prussian_blue-500 mb-8">Lector de Facturas</h1>
 
-      {!session ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
-          <Login />
-          <Register />
-        </div>
-      ) : (
-        <div className="max-w-xl mx-auto mt-10">
-          <p className="mb-4 text-center">Has iniciado sesión como <strong>{session.user.email}</strong></p>
+        {!session ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Login />
+            <Register />
+          </div>
+        ) : (
+          <div className="bg-white shadow-lg rounded-xl p-6 text-prussian_blue-500">
+            <p className="text-lg mb-4 text-center">
+              Has iniciado sesión como <strong>{session.user.email}</strong>
+            </p>
 
-          <div className="bg-white p-4 rounded shadow">
-            <input
-              type="file"
-              accept=".pdf"
-              onChange={handleFileChange}
-              className="mb-4 w-full"
-            />
-            <button
-              onClick={handleUpload}
-              disabled={processing || !selectedFile}
-              className="bg-blue-600 text-white px-4 py-2 rounded w-full"
-            >
-              {processing ? 'Procesando...' : 'Subir factura'}
-            </button>
-            {downloadLink && (
-              <a
-                href={downloadLink}
-                download="factura_procesada.xlsx"
-                className="block text-center text-green-600 mt-4"
+            <div className="flex flex-col items-center space-y-4">
+              <input
+                type="file"
+                accept=".pdf"
+                onChange={handleFileChange}
+                className="border border-sky_blue-300 rounded px-4 py-2 w-full"
+              />
+              <button
+                onClick={handleUpload}
+                disabled={processing || !selectedFile}
+                className="bg-prussian_blue-500 hover:bg-prussian_blue-600 text-white font-medium py-2 px-6 rounded w-full transition duration-200"
               >
-                Descargar Excel generado
-              </a>
-            )}
-            {error && <p className="text-red-600 text-sm mt-4 text-center">{error}</p>}
-          </div>
+                {processing ? 'Procesando...' : 'Subir factura'}
+              </button>
 
-          <div className="text-center mt-6">
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 text-white px-4 py-2 rounded"
-            >
-              Cerrar sesión
-            </button>
+              {downloadLink && (
+                <a
+                  href={downloadLink}
+                  download="factura_procesada.xlsx"
+                  className="text-green-700 underline"
+                >
+                  Descargar Excel generado
+                </a>
+              )}
+
+              {error && <p className="text-red-600 text-center">{error}</p>}
+
+              <button
+                onClick={handleLogout}
+                className="mt-6 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition duration-200"
+              >
+                Cerrar sesión
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }
