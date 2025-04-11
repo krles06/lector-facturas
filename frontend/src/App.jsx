@@ -6,6 +6,7 @@ import Login from './components/Login'
 
 function App() {
   const [session, setSession] = useState(null)
+  console.log('Sesión actual:', session)
   const [selectedFile, setSelectedFile] = useState(null)
   const [processing, setProcessing] = useState(false)
   const [error, setError] = useState(null)
