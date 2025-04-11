@@ -62,9 +62,9 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-light_blue-900 font-sans text-prussian_blue-100">
+    <div className="min-h-screen bg-gradient-to-br from-light_blue-100 to-light_blue-500 font-sans text-prussian_blue-100">
       <div className="max-w-4xl mx-auto py-10 px-4">
-        <h1 className="text-4xl font-bold text-center text-prussian_blue-500 mb-8">Lector de Facturas</h1>
+        <h1 className="text-4xl font-bold text-center text-prussian_blue-500 mb-8">📄 Lector de Facturas</h1>
 
         {!session ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -72,7 +72,7 @@ function App() {
             <Register />
           </div>
         ) : (
-          <div className="bg-white shadow-lg rounded-xl p-6 text-prussian_blue-500">
+          <div className="bg-white shadow-lg rounded-xl p-6 text-prussian_blue-500 animate-fade-in">
             <p className="text-lg mb-4 text-center">
               Has iniciado sesión como <strong>{session.user.email}</strong>
             </p>
