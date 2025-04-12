@@ -1,4 +1,3 @@
-// src/components/Register.jsx
 import { useState } from 'react'
 import { supabase } from '../supabaseClient'
 
@@ -13,20 +12,20 @@ export default function Register() {
     if (error) {
       setMessage(error.message)
     } else {
-      setMessage('Registro exitoso. Revisa tu email para confirmar.')
+      setMessage('Revisa tu correo para confirmar el registro.')
     }
   }
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-md">
-      <h2 className="text-2xl font-bold mb-4 text-prussian_blue-500 text-center">Crear cuenta</h2>
+      <h2 className="text-2xl font-bold mb-4 text-primary text-center">Crear cuenta</h2>
       <form onSubmit={handleRegister} className="space-y-4">
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border border-sky_blue-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-prussian_blue-500"
+          className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
           required
         />
         <input
@@ -34,12 +33,12 @@ export default function Register() {
           placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full border border-sky_blue-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-prussian_blue-500"
+          className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary"
           required
         />
         <button
           type="submit"
-          className="w-full bg-prussian_blue-500 hover:bg-prussian_blue-600 text-white py-2 px-4 rounded transition duration-200"
+          className="w-full bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded transition duration-200"
         >
           Registrarse
         </button>
